@@ -4,7 +4,6 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 import Create from "./Create";
-import "./App.css";
 
 function App() {
   const [show, setShow] = useState(0);
@@ -21,7 +20,7 @@ function App() {
 
   async function fetch() {
     try {
-      const res = await axios.get("http://localhost:3000/", {
+      const res = await axios.get("http://localhost:3000/cards/", {
         params: {
           page: page.page,
           limit: page.limit,

@@ -50,6 +50,10 @@ function Main({data, changePage}) {
             type="text"
             placeholder="Search"
             onChange={hSearch}
+            onKeyDown={(e) => {
+              if (e.key === "Enter")
+                  search();
+              }}
             value={searchQuery}
           />
           <button onClick={search} className="text-2xl pl-0 pr-2">
