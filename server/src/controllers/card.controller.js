@@ -40,18 +40,18 @@ const getAllCards = asyncHandler(async (req, res) => {
   res.status(200).json(new ApiResponse(200, true, "Cards Fetched Successfully!", data));
 });
 
-const getCardById = asyncHandler(async (req, res) => {
-  const {id} = req.query;
+const getCardByTitle = asyncHandler(async (req, res) => {
+  const { title } = req.params;
   
-  if(!id) throw new ApiError(400, "Id Is Empty!");
+  if(!title) throw new ApiError(400, "Id Is Empty!");
 
-  const card = await Card.findById(id);
-
-  if (!card) return new ApiResponse(200, true, "No Card Found!");
+  const card = await Card.findOne({title});
+  
+  if (!card) return res.status(200).json(new ApiResponse(200, true, "No Card Found!"))
 
   res
     .status(200)
     .json(new ApiResponse(200, true, "Card Found!", card));
 });
 
-export { createCard, getAllCards, getCardById };
+export { createCard, getAllCards, getCardByTitle };

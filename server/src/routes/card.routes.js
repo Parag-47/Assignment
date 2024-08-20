@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { createCard, getAllCards, getCardById } from "../controllers/card.controller.js";
+import { createCard, getAllCards, getCardByTitle } from "../controllers/card.controller.js";
 
 const cardRouter = Router();
 
-cardRouter.post("/create", createCard);
-cardRouter.get("/", getAllCards);
-cardRouter.get("/card", getCardById);
+cardRouter.post("/cards", createCard);
+cardRouter.get("/cards", getAllCards);
+cardRouter.get("/cards/:title", getCardByTitle);
 
 export default cardRouter;
